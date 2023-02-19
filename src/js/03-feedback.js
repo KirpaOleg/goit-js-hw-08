@@ -9,8 +9,8 @@ initForm();
 formEl.addEventListener('submit', onFormSubmit);
 formEl.addEventListener('input', throttle(onFormInput, 500));
 
-function onFormInput(event) {
-  formData[event.target.name] = event.target.value;
+function onFormInput(evt) {
+  formData[evt.target.name] = evt.target.value;
   console.log('formData:', formData);
   return localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(formData));
 }
