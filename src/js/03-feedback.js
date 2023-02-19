@@ -11,7 +11,6 @@ formEl.addEventListener('input', throttle(onFormInput, 500));
 
 function onFormInput(evt) {
   formData[evt.target.name] = evt.target.value;
-  console.log('formData:', formData);
   return localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(formData));
 }
 
@@ -22,9 +21,7 @@ function onFormSubmit(evt) {
 }
 
 function initForm() {
-  const saveText = JSON.parse(
-    localStorage.getItem(LOCALSTORAGE_KEY, JSON.stringify(formData))
-  );
+  const saveText = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
 
   if (saveText) {
     formEl.email.value = saveText.email;
