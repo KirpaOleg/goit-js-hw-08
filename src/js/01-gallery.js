@@ -1,10 +1,6 @@
-// Add imports above this line
-import { galleryItems } from './gallery-items';
-// Change code below this line
+import { galleryItems } from './gallery-items.js';
 import SimpleLightbox from 'simplelightbox';
-import SimpleLightbox from 'simplelightbox/dist/simple-lightbox.esm';
-
-console.log(galleryItems);
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const galleryEl = document.querySelector('.gallery');
 
@@ -32,4 +28,3 @@ let gallery = new SimpleLightbox('.gallery__item', {
 
 const captionsDataCentr = gallery.domNodes.caption;
 captionsDataCentr.style.textAlign = 'center';
-console.log('captionsDataCentr:', captionsDataCentr);
