@@ -16,15 +16,21 @@ function onFormInput(evt) {
 
 function onFormSubmit(evt) {
   evt.preventDefault();
+  console.log(formData);
   evt.currentTarget.reset();
   localStorage.removeItem(LOCALSTORAGE_KEY);
 }
 
 function initForm() {
-  const saveText = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
-
-  if (saveText) {
-    formEl.email.value = saveText.email;
-    formEl.message.value = saveText.message;
+  let saveText = localStorage.getItem(LOCALSTORAGE_KEY);
+  try {
+    if (saveText) {
+      saveText = JSON.parse(saveText);
+      Object.entries(saveText).forEach(([name, value]) => {
+        formEl.elements[name].value = value;
+      });
+    }
+  } catch (err) {
+    console.log(err.message);
   }
 }
